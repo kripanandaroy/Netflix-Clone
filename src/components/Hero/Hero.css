@@ -1,0 +1,202 @@
+.hero {
+  position: relative;
+  height: 100vh;
+  width: 100%;
+  color: #fff;
+  top: 0;
+  overflow: hidden;
+}
+
+.hero__background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+}
+
+.hero__background--active {
+  opacity: 1;
+}
+
+.hero__background img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 20%;
+  transform: scale(1);
+}
+
+/* Ken Burns Effect exclusively on active image */
+.hero__background--active img {
+  animation: kenBurns 6s linear forwards;
+}
+
+@keyframes kenBurns {
+  0% { transform: scale(1); }
+  100% { transform: scale(1.05); }
+}
+
+.hero__gradient {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to right, rgba(0,0,0,0.8) 30%, transparent 70%),
+              linear-gradient(to top, rgba(0,0,0,1) 0%, transparent 40%);
+}
+
+.hero__content {
+  position: absolute;
+  bottom: 150px;
+  left: 60px;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  width: 50%;
+}
+
+.hero__title {
+  font-size: 3.5rem;
+  font-weight: 900;
+  margin-bottom: 0.5rem;
+  color: #fff;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.45);
+  animation: slideInLeft 1s ease-out;
+}
+
+@keyframes slideInLeft {
+  from { transform: translateX(-50px); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+
+.hero__meta {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  font-size: 1.1rem;
+  font-weight: 500;
+  margin-bottom: 1rem;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+  animation: slideInLeft 1s ease-out;
+}
+
+.hero__description {
+  font-size: 1.1rem;
+  line-height: 1.4;
+  margin-bottom: 2rem;
+  font-weight: 400;
+  max-width: 400px;
+  color: #fff;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+  animation: slideInLeft 1s ease-out;
+}
+
+.hero__match {
+  color: #46d369; 
+  font-weight: 600;
+}
+
+.hero__rating {
+  border: 1px solid rgba(255,255,255,0.4);
+  padding: 0 0.4rem;
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+.hero__year {
+  color: #fff;
+}
+
+.hero__buttons {
+  display: flex;
+  gap: 1rem;
+  animation: fadeUp 1s ease-out;
+}
+
+@keyframes fadeUp {
+  from { transform: translateY(20px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+.hero__button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 28px;
+  border-radius: 4px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  transition: all 0.2s ease;
+}
+
+.hero__button svg {
+  width: 24px;
+  height: 24px;
+}
+
+.hero__button--play {
+  background-color: #fff;
+  color: #000;
+}
+
+.hero__button--play:hover {
+  background-color: rgba(255, 255, 255, 0.75);
+  box-shadow: 0 0 20px rgba(229, 9, 20, 0.5);
+}
+
+.hero__button--more {
+  background-color: rgba(109, 109, 110, 0.7);
+  color: #fff;
+  backdrop-filter: blur(2px);
+}
+
+.hero__button--more:hover {
+  background-color: rgba(109, 109, 110, 0.4);
+}
+
+.hero__indicators {
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 8px;
+  z-index: 20;
+}
+
+.hero__dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.4);
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  transition: background-color 0.3s ease;
+}
+
+.hero__dot:hover {
+  background-color: rgba(255, 255, 255, 0.8);
+}
+
+.hero__dot--active {
+  background-color: #fff;
+}
+
+@media screen and (max-width: 768px) {
+  .hero__content {
+    left: 4%;
+    bottom: 100px;
+    width: 90%;
+  }
+  .hero__title {
+    font-size: 2.5rem;
+  }
+}

@@ -1,0 +1,100 @@
+.movie-row {
+  margin-top: 2rem;
+  margin-bottom: 50px;
+  padding: 0 60px; 
+  color: #fff;
+  position: relative;
+}
+
+.movie-row__title {
+  font-size: 1.4rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  color: #fff;
+  border-left: 3px solid #E50914;
+  padding-left: 10px;
+}
+
+.movie-row__container {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.movie-row__posters {
+  display: flex;
+  overflow-y: hidden;
+  overflow-x: scroll;
+  padding: 2rem 0; 
+  scroll-behavior: smooth;
+  gap: 10px;
+  width: 100%;
+}
+
+.movie-row__posters::-webkit-scrollbar {
+  display: none;
+}
+
+.movie-row__posters {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.movie-row__arrow {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 40px;
+  background: rgba(20, 20, 20, 0.5);
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  z-index: 20;
+  opacity: 0;
+  transition: opacity 0.3s ease, background 0.3s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.movie-row__arrow svg {
+  width: 40px;
+  height: 40px;
+  opacity: 1;
+  transform: scale(1);
+  transition: transform 0.2s;
+}
+
+.movie-row__arrow:hover {
+  background: rgba(20, 20, 20, 0.8);
+}
+
+.movie-row__arrow:hover svg {
+  transform: scale(1.2);
+}
+
+.movie-row:hover .movie-row__arrow {
+  opacity: 1;
+}
+
+.movie-row__arrow--left {
+  left: 0;
+  margin-left: -60px; 
+  width: 60px;
+}
+
+.movie-row__arrow--right {
+  right: 0;
+  width: 60px;
+}
+
+@media screen and (max-width: 768px) {
+  .movie-row {
+    padding-left: 4%;
+  }
+  .movie-row__arrow--left {
+    margin-left: -4%;
+    width: 4%;
+  }
+}

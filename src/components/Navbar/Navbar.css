@@ -1,0 +1,74 @@
+.navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  padding: 0 60px;
+  height: 68px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 1000;
+  background-color: transparent;
+  transition: background-color 0.4s ease;
+}
+
+.navbar--scrolled {
+  background-color: #141414;
+}
+
+.navbar__left {
+  display: flex;
+  align-items: center;
+}
+
+.navbar__logo {
+  cursor: pointer;
+  animation: logoPulse 1s ease-out;
+}
+
+@keyframes logoPulse {
+  0% { transform: scale(1); opacity: 0; }
+  50% { transform: scale(1.05); filter: drop-shadow(0 0 8px rgba(229,9,20,0.5)); opacity: 1; }
+  100% { transform: scale(1); filter: none; }
+}
+
+.navbar__right {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.navbar__language {
+  background-color: transparent;
+  color: #fff;
+  border: 1px solid #fff;
+  padding: 0.3rem 1rem;
+  border-radius: 3px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.navbar__language option {
+  background-color: #141414;
+}
+
+.navbar__signin {
+  background-color: #E50914;
+  color: #fff;
+  padding: 0.4rem 1rem;
+  border-radius: 3px;
+  font-size: 14px;
+  font-weight: 500;
+  transition: background-color 0.2s;
+}
+
+.navbar__signin:hover {
+  background-color: #F40612;
+}
+
+@media screen and (max-width: 768px) {
+  .navbar {
+    padding: 0 4%;
+  }
+}
