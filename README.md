@@ -1,5 +1,5 @@
 ## 🔗 Live Demo
-[Netflix Clone](https://netflix-clone-beta-jet-86.vercel.app/)
+[Netflix Clone](https://ketflix-clone-beta-jet-86.vercel.app/)
 
 # React + Vite
 
