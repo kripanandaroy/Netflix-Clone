@@ -1,7 +1,34 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './MovieCard.css';
+import { useAuth } from '../../context/AuthContext';
+import VideoPlayer from '../VideoPlayer/VideoPlayer';
 
 const MovieCard = ({ movie, isLargeRow, isContinueWatching }) => {
+  const [showPlayer, setShowPlayer] = useState(false);
+  const { user, addToMyList, removeFromMyList } = useAuth();
+  
+  const isInList = user?.myList?.some(m => m.id === movie.id);
+
+  const handlePlay = () => {
+    if (!user) {
+      alert("Please sign in to watch!");
+      return;
+    }
+    setShowPlayer(true);
+  };
+
+  const handleAddRemove = () => {
+    if (!user) {
+      alert("Please sign in to add to your list!");
+      return;
+    }
+    if (isInList) {
+      removeFromMyList(movie.id);
+    } else {
+      addToMyList(movie);
+    }
+  };
+
   return (
     <div className={`movie-card ${isLargeRow ? 'movie-card--large' : ''} ${isContinueWatching ? 'movie-card--continue' : ''}`}>
       {isLargeRow && (
@@ -32,7 +59,7 @@ const MovieCard = ({ movie, isLargeRow, isContinueWatching }) => {
               <span className="movie-card__time-remaining">{movie.timeRemaining || (movie.progress ? `${Math.floor(100 - movie.progress)} min left` : '')}</span>
             </div>
             <div className="movie-card__buttons" style={{ marginTop: 'auto' }}>
-              <button className="movie-card__btn movie-card__btn--play movie-card__btn--resume">
+              <button className="movie-card__btn movie-card__btn--play movie-card__btn--resume" onClick={handlePlay}>
                 <svg viewBox="0 0 24 24" fill="currentColor">
                   <path d="M8 5v14l11-7z"/>
                 </svg>
@@ -57,15 +84,24 @@ const MovieCard = ({ movie, isLargeRow, isContinueWatching }) => {
               )}
             </div>
             <div className="movie-card__buttons">
-              <button className="movie-card__btn movie-card__btn--play">
+              <button className="movie-card__btn movie-card__btn--play" onClick={handlePlay}>
                  <svg viewBox="0 0 24 24" fill="currentColor">
                   <path d="M8 5v14l11-7z"/>
                 </svg>
               </button>
-              <button className="movie-card__btn movie-card__btn--add">
-                <svg viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/>
-                </svg>
+              <button 
+                className={`movie-card__btn movie-card__btn--add ${isInList ? 'movie-card__btn--added' : ''}`}
+                onClick={handleAddRemove}
+              >
+                {isInList ? (
+                  <svg viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+                  </svg>
+                ) : (
+                  <svg viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/>
+                  </svg>
+                )}
               </button>
               <button className="movie-card__btn movie-card__btn--like">
                 👍
@@ -74,6 +110,10 @@ const MovieCard = ({ movie, isLargeRow, isContinueWatching }) => {
           </>
         )}
       </div>
+
+      {showPlayer && (
+        <VideoPlayer movie={movie} onClose={() => setShowPlayer(false)} />
+      )}
     </div>
   );
 };

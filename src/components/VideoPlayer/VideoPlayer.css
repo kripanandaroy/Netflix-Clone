@@ -1,0 +1,160 @@
+.video-player {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 9999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #000;
+}
+
+.video-player__backdrop {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.9);
+}
+
+.video-player__content {
+  position: relative;
+  width: 100%;
+  max-width: 1200px;
+  background: #141414;
+  box-shadow: 0 0 50px rgba(0, 0, 0, 0.8);
+  display: flex;
+  flex-direction: column;
+}
+
+.video-player__top-bar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 20px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.8), transparent);
+  z-index: 10;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.video-player__content:hover .video-player__top-bar {
+  opacity: 1;
+}
+
+.video-player__back-btn {
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 1.2rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 600;
+}
+
+.video-player__back-btn span {
+  font-size: 1.6rem;
+}
+
+.video-player__info-badge {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.n-logo {
+  color: #E50914;
+  font-size: 1.8rem;
+  font-weight: 900;
+}
+
+.movie-title {
+  color: #fff;
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+
+.video-player__fullscreen-btn {
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 1.4rem;
+  cursor: pointer;
+}
+
+.video-player__video-wrapper {
+  position: relative;
+  padding-top: 56.25%; /* 16:9 Aspect Ratio */
+  width: 100%;
+}
+
+.video-player__video-wrapper iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.video-player__footer {
+  padding: 30px 40px;
+}
+
+.video-player__meta {
+  color: #fff;
+}
+
+.video-player__title {
+  font-size: 1.8rem;
+  margin-bottom: 12px;
+}
+
+.video-player__stats {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 10px;
+}
+
+.match-score {
+  color: #46d369;
+  font-weight: 600;
+}
+
+.quality-badge {
+  border: 1px solid #737373;
+  padding: 0 4px;
+  font-size: 0.7rem;
+  border-radius: 2px;
+  color: #737373;
+}
+
+.video-player__note {
+  color: #a3a3a3;
+  font-size: 0.9rem;
+}
+
+@media (max-width: 768px) {
+  .video-player__content {
+    height: 100vh;
+    max-width: 100%;
+  }
+  
+  .video-player__top-bar {
+    opacity: 1;
+    padding: 15px 20px;
+  }
+  
+  .video-player__footer {
+    padding: 20px;
+  }
+}

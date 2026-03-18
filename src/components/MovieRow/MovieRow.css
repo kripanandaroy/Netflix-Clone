@@ -1,9 +1,10 @@
 .movie-row {
   margin-top: 2rem;
   margin-bottom: 50px;
-  padding: 0 60px; 
+  padding: 0 60px;
   color: #fff;
   position: relative;
+  overflow: visible !important;
 }
 
 .movie-row__title {
@@ -19,16 +20,18 @@
   position: relative;
   display: flex;
   align-items: center;
+  overflow: visible !important;
 }
 
 .movie-row__posters {
   display: flex;
-  overflow-y: hidden;
+  overflow-y: visible;
   overflow-x: scroll;
-  padding: 2rem 0; 
+  padding: 2rem 0;
   scroll-behavior: smooth;
   gap: 10px;
   width: 100%;
+  -webkit-overflow-scrolling: touch;
 }
 
 .movie-row__posters::-webkit-scrollbar {
@@ -91,10 +94,19 @@
 
 @media screen and (max-width: 768px) {
   .movie-row {
-    padding-left: 4%;
+    padding: 0 16px;
+    margin-bottom: 30px;
   }
   .movie-row__arrow--left {
-    margin-left: -4%;
-    width: 4%;
+    margin-left: -16px;
+    width: 30px;
+  }
+  .movie-row__arrow--right {
+    width: 30px;
+  }
+  .movie-row__arrow {
+    opacity: 1;
+    width: 30px;
+    background: rgba(20, 20, 20, 0.7);
   }
 }
