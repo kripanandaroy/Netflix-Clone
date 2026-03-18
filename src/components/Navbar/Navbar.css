@@ -22,6 +22,12 @@
 }
 
 .navbar__logo {
+  color: #E50914;
+  font-size: 2rem;
+  font-weight: 900;
+  font-style: italic;
+  letter-spacing: -1px;
+  font-family: 'Arial Black', sans-serif;
   cursor: pointer;
   animation: logoPulse 1s ease-out;
 }
@@ -35,7 +41,22 @@
 .navbar__right {
   display: flex;
   align-items: center;
+}
+
+.navbar__nav-links {
+  display: flex;
+  align-items: center;
   gap: 1.5rem;
+}
+
+.navbar__hamburger {
+  display: none;
+  background: transparent;
+  color: white;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+  margin-left: 1rem;
 }
 
 .navbar__language {
@@ -70,5 +91,20 @@
 @media screen and (max-width: 768px) {
   .navbar {
     padding: 0 4%;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .navbar {
+    padding: 0 16px;
+  }
+  .navbar__logo {
+    font-size: 1.5rem; /* Around ~80px width visually */
+  }
+  .navbar__nav-links {
+    display: none;
+  }
+  .navbar__hamburger {
+    display: flex;
   }
 }
